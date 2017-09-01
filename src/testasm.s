@@ -14,7 +14,7 @@ start:
 _main:
     push    rbp
     mov     rbp, rsp
-    sub     rsp, 16
+    ; sub     rsp, 16
     lea     rdi, [rel msg]
     call    _printf
     leave
