@@ -1,6 +1,6 @@
 section .data
-    msg db "Hello", 0xa
-    len db $ - msg
+    msg db "Hello World! :)", 0xa
+    len equ $ - msg
 
 section .text
     global _main
@@ -12,10 +12,12 @@ start:
     ret
 
 _main:
-    push    rbp
-    mov     rbp, rsp
-    ; sub     rsp, 16
-    lea     rdi, [rel msg]
-    call    _printf
-    leave
-    ret
+    mov rax, 0x2000004
+    mov rdi, 1
+    mov rsi, msg
+    mov rdx, len
+    syscall
+
+    mov rax, 0x2000001
+    mov rdi, 0
+    syscall
