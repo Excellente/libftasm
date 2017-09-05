@@ -23,3 +23,7 @@ _print:
     mov rax, 0x2000001
     mov rdx, 0
     syscall
+
+    ; RETURN
+    mov rax, 7
+    ret
