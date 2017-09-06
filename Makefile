@@ -26,7 +26,7 @@ $(LINKER):
 	$(LINKER) $(ARCH) $(OBJ) $(LIB) -o $(EXE)
 
 clean:
-	rm -f $(OBJ) *.out
+	rm -f $(OBJ) *.out *.o
 
 fclean: clean
 	rm -f $(EXE)

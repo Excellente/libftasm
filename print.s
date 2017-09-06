@@ -12,18 +12,18 @@ _print:
     sub     rsp, 8
 
     ; CODE
-    mov     rdi, 1              ; sys_call arg1
-    mov     rsi, rcx            ; sys_call arg2
-    mov     rdx, r8             ; sys_call arg3
-    mov     rax, 0x2000004      ; sys_call opcode
+    mov     rdi, 1              ; stdoutfd: sys_call arg1
+    mov     rsi, rcx            ; message:  sys_call arg2
+    mov     rdx, r8             ; length:   sys_call arg3
+    mov     rax, 0x2000004      ; opcode:   sys_call opcode
     syscall
 
     ; EXIT
-    pop rbp
     mov rax, 0x2000001
-    mov rdx, 0
+    mov rdi, 0
     syscall
 
     ; RETURN
-    mov rax, 7
+    pop rbp
+    mov rax, rcx
     ret
