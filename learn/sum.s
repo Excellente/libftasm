@@ -3,8 +3,8 @@ section .data
 num2: equ 50
 num1: equ 100
 
-SYS_EXIT: equ 0x2000001
-SYS_WRITE: equ 0x2000004
+SYS_EXIT: equ 60
+SYS_WRITE: equ 1
 
 ;; initialize message
 msg: db "Sum is correct", 0xa
@@ -12,9 +12,14 @@ len: equ $ - msg
 
 section .text
     global _main
+    global _start
+
+_main:
+    call _start
+    ret
 
 ;; program entry point
-_main:
+_start:
     mov rax, num1
     mov rbx, num2
     add rax, rbx        ;; add rbx to rax, and store the value to rax

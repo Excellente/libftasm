@@ -1,9 +1,10 @@
 section .data
-    SYS_WRITE       equ 0x2000004   ;; system write function   
+    ;;SYS_WRITE       equ 0x2000004   ;; system write function   
+    SYS_WRITE       equ 1   ;; system write function   
     STD_IN          equ 1           ;; file descriptor for stdout
-    SYS_EXIT        equ 1           ;; system exit function
+    SYS_EXIT        equ 60           ;; system exit function
     EXIT_SUCCESS    equ 0           ;; succesful exec
-    EXIT_FAILURE    equ 0           ;; unsuccesful exec
+    EXIT_FAILURE    equ 1           ;; unsuccesful exec
 
     NEW_LINE        db  0xa         ;; '\n' new line character
     WRONG_ARGC      db  "Must be two command line arguments", 0xa
@@ -11,8 +12,13 @@ section .data
 
 section .text
     global  _main
+    global  _start
 
 _main:
+    call    _start
+    ret
+
+_start:
     pop     rcx             ;; argc is first in the stack | argumnt count [rsp]
     cmp     rcx, 3          ;; checks if the program did collect 2 command line args + prog name
     jne     argc_error      ;; error if arguments aint 2
@@ -71,8 +77,7 @@ print:
 	mov rsi, rsp
 	;; call sys_write
 	syscall
-
-    jmp _exit
+	jmp _exit
 
 argc_error:
     mov rax, SYS_WRITE

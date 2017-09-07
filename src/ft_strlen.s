@@ -1,32 +1,21 @@
 section .data
-    NULL equ 0
+	NULL		equ	0x00	;; null terminator definition
 
 section .text
-    global  _ft_strlen
-    global  _while
-    extern  _print
+	global	_ft_strlen
+	global	start
 
 _ft_strlen:
-    push    rbp
-    mov     rsi, 1
-    call    _while
+	xor	rcx, rcx			;; zero out rcx register
+	call	start
 
-_while:
-    xor     al, al          ; set lower oder byte of rax to zero
-    ; xor     rcx, rcx        ; set rcx to zero
-    mov rcx, -1
+start:
+	cmp	[rdi], byte NULL	;; compare byte at location pointed by rdi with NULL/0
+	je	_exit				;; exit if equal to zero
+	inc	rcx					;; else increment the rcx
+	inc	rdi					;; update rdi to point to next byte
+	jmp	start				;; repeat the process
 
-    ; if current byte is 0 stop
-    inc     rcx
-    cmp     byte [rdi + rcx], 0x00
-    mov     rsi, rcx
-    call    _print    
-    jne     _while
-    jmp     END
-
-END:
-    mov     rsi, rcx
-    call    _print
-    lea     rax, [rcx]
-    pop     rbp
-    ret
+_exit:
+	mov	rax, rcx			;; set return value
+	ret
