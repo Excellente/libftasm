@@ -56,7 +56,7 @@ push:
 	@cd ../emsimang
 	
 	@echo "\033[92mPushing to vog repo\033[0m"
-	@git add .; git commit -m "automated push"; git push
+	@git add .; git commit -m "automated push"; git push origin master
 	@cd ../libftasm
 	
 	@echo "\033[92mDONE!\033[0m"
