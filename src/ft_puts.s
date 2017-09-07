@@ -1,45 +1,35 @@
 section .data
-	SYS_EXIT	equ	0x2000001
-	SYS_WRITE	equ	0x2000004
-	STD_OUT		equ	1
-	EOF			equ (-1)
-	nwln		db 0xa
+    nwln db 0xa
 
-section	.text
-	global	start
-	global	_ft_puts
+section .text
+    global  _ft_puts
+    extern  _ft_strlen
 
 _ft_puts:
-	;; SETUP
-	push	 rbp
-	mov	rbp, rsp
-	sub	rsp, 8
+    cmp     rdi, 0
+    je      _newline
+    push    rbp
+    mov     rbp, rsp
+    sub     rsp, 8
+    call    _ft_strlen
+    mov     rcx, rdi
 
-	cmp	[rdi], byte 0
-	je	_exit
-	; mov	rcx, rdi
+_print:
+    mov     rdi, 1
+    mov     rsi, rcx
+    mov     rdx, rax
+    mov     rax, 0x2000004
+    syscall
 
-; 	mov	rdi, STD_OUT
-; 	mov	rsi, rcx
-; 	mov	rdx, rax
-; 	mov	rax, SYS_WRITE
-; 	syscall
-; 	jmp	exit
-
-; _quit:
-; 	mov	rdi, STD_OUT
-; 	lea	rsi, [rel nwln]
-; 	mov	rdx, 1
-; 	mov	rax, SYS_WRITE
-; 	syscall
-; 	jmp	exit
+_newline:
+    mov     rdi, 1
+    lea     rsi, [rel nwln]
+    mov     rdx, 1
+    mov     rax, 0x2000004
+    syscall
+    jmp     _exit
 
 _exit:
-	pop	rsp
-	mov	rax, SYS_EXIT
-	mov	rdi, 0
-	syscall
-
-; ; exit:
-; ; 	mov	rax, rdx
-; ; 	ret
+    mov rax, 0x2000001
+    mov rdi, 0
+    syscall

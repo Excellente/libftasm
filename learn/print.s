@@ -1,39 +1,39 @@
 section .data
-    nl db 0xa
+    nwln db 0xa
 
 section .text
-    global _print
+    global  _ft_puts
+    extern  _ft_strlen
 
-_print:
-    ; MAIN ARGUMENTS
-    mov rcx, rdi            ; argument from main
-    mov r8,  rsi            ; argument from main
-
-    ; SET-UP
+_ft_puts:
+    cmp     rdi, 0
+    je      _exit
     push    rbp
     mov     rbp, rsp
     sub     rsp, 8
+    call    _ft_strlen
+    mov     rcx, rdi
 
-    ; CODE
-    mov     rdi, 1              ; stdoutfd: sys_call arg1
-    mov     rsi, rcx            ; message:  sys_call arg2
-    mov     rdx, r8             ; length:   sys_call arg3
-    mov     rax, 0x2000004      ; opcode:   sys_call opcode
-    syscall
-
-    ; print newline
-    mov     rdi, 1              ; stdoutfd: sys_call arg1
-    lea     rsi, [rel nl]
-    mov     rdx, r8             ; length:   sys_call arg3
+_print:
+    mov     rdi, 1
+    mov     rsi, rcx
+    mov     rdx, rax
     mov     rax, 0x2000004
     syscall
 
-    ; EXIT
+_newline:
+    mov     rdi, 1
+    lea     rsi, [rel nwln]
+    mov     rdx, 1
+    mov     rax, 0x2000004
+    syscall
+
+_exit:
     mov rax, 0x2000001
     mov rdi, 0
     syscall
 
-    ; RETURN
-    pop rbp
-    mov rax, rcx
-    ret
+; _return:
+;     pop rbp
+;     mov rax, rcx
+;     ret
