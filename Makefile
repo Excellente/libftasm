@@ -26,24 +26,46 @@ endif
 all: $(ft_puts) $(ft_strlen) $(LIB) $(EXE)
 
 $(EXE): main.c	
-	$(COMP) $^ $(LIB) -I $(INC) -o $(EXE)
+	@$(COMP) $^ $(LIB) -I $(INC) -o $(EXE)
+	@echo "\033[92mDone!\033[0m"
 
 $(ft_puts): src/ft_puts.s
-	$(CC) -f $(FORMAT) src/ft_puts.s -o ft_puts.o
-	mv -f *.o $(OBJDIR)
+	@echo "\033[92mputs object\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_puts.s -o ft_puts.o
+	@mv -f *.o $(OBJDIR)
 
 $(ft_strlen): src/ft_strlen.s
-	$(CC) -f $(FORMAT) src/ft_strlen.s -o ft_strlen.o
-	mv -f *.o $(OBJDIR)
+	@echo "\033[92mstrlen object\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_strlen.s -o ft_strlen.o
+	@mv -f *.o $(OBJDIR)
 
 $(LIB):
-	ar rc $(LIB) $(OBJDIR)*.o
-	ranlib $(LIB)
+	@echo "\033[92mBuilding Library\033[0m"
+	@ar rc $(LIB) $(OBJDIR)*.o
+	@ranlib $(LIB)
+	@echo "\033[92mLibrary Built\033[0m"
+
+
+push:
+	@make fclean
+	@echo "\033[92mCommitting to git\033[0m"
+	git add .; git commit -m "automated push"; git push
+	
+	@echo "\033[92mCopying to vog repo\033[0m"
+	cp -rf src obj include Makefile ../emsimang
+	cd ../emsimang
+	
+	@echo "\033[92mPushing to vog repo\033[0m"
+	git add .; git commit -m "automated push"; git push
+	cd ../libftasm
+	
+	@echo "\033[92mDONE!\033[0m"
 
 clean:
-	rm -f $(OBJDIR)*.o *.out *.o
+	@echo "\033[92mCleaning\033[0m"
+	@rm -f $(OBJDIR)*.o *.out *.o
 
 fclean: clean
-	rm -f $(LIB)
+	@rm -f $(LIB)
 
 re: fclean all
