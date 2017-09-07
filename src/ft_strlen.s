@@ -1,5 +1,5 @@
 section .data
-	NULL		equ	0x00	;; null terminator definition
+	NULL		equ	0		;; null terminator definition
 
 section .text
 	global	_ft_strlen
@@ -17,5 +17,5 @@ start:
 	jmp	start				;; repeat the process
 
 _exit:
-	mov	rax, rcx			;; set return value
+	mov	rax, rcx	;; set return value
 	ret

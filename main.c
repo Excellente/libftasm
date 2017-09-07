@@ -29,7 +29,7 @@ int main(void)
 	printf("\n************************* strlen Test 3 *************************\n");
 	ret = strlen("Zamani");
 	printf("strlen ret: %d\n", ret);
-	ret = ft_strlen("ft_Zamani");
+	ret = ft_strlen("Zamani");
 	printf("ft_strlen ret: %d\n\n", ret);
 	// /*************************************
 	// **	test my puts 

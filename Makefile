@@ -69,3 +69,5 @@ fclean: clean
 	@rm -f $(LIB)
 
 re: fclean all
+
+.PHONY: clean fclean push
