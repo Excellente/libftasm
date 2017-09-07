@@ -40,17 +40,16 @@ int main(void)
 	/**************************************************************************
 	**	                             start test puts                          *
 	**************************************************************************/
-	printf("************************* puts Test 1 *************************\n");
-	ret = puts("Zamani");
-	printf("puts ret: %d\n", ret);
-	ret = ft_puts("Zamani");
-	printf("ft_puts ret: %d\n", ret);
-
-	// printf("\n************************* puts Test 2 *************************\n");
+	// printf("************************* puts Test 1 *************************\n");
 	// ret = puts("Zamani");
 	// printf("puts ret: %d\n", ret);
-	// ret = ft_puts("ft_Zamani");
-	// ret = ft_strlen("ft_Zamani");
-	// printf("ft_strlen ret: %d\n", ret);
+	// ret = ft_puts("Zamani");
+	// printf("ft_puts ret: %d\n", ret);
+
+	printf("\n************************* puts Test 2 *************************\n");
+	ret = puts("Zamani");
+	printf("puts ret: %d\n", ret);
+	ret = ft_puts("ft_Zamani");
+	printf("ft_strlen ret: %d\n", ret);
 	return (0);
 }
