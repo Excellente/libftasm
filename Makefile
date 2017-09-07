@@ -49,15 +49,15 @@ $(LIB):
 push:
 	@make fclean
 	@echo "\033[92mCommitting to git\033[0m"
-	git add .; git commit -m "automated push"; git push
+	@git add .; git commit -m "automated push"; git push
 	
 	@echo "\033[92mCopying to vog repo\033[0m"
-	cp -rf src obj include Makefile ../emsimang
-	cd ../emsimang
+	@cp -rf src obj include Makefile ../emsimang
+	@cd ../emsimang
 	
 	@echo "\033[92mPushing to vog repo\033[0m"
-	git add .; git commit -m "automated push"; git push
-	cd ../libftasm
+	@git add .; git commit -m "automated push"; git push
+	@cd ../libftasm
 	
 	@echo "\033[92mDONE!\033[0m"
 
