@@ -115,6 +115,7 @@ void	printIsprint(int c)
 int main(void)
 {
 	int ret;
+	char ch;
 	char *ptr;
 	char *fptr;
 	char bptr[7] = "Zamani\0";
@@ -123,6 +124,7 @@ int main(void)
 	int	 num2[7] = {1, 2, 3, 5, 6, 7, 8};
 
 	ret = 0;
+	ch = 32;
 	ptr = (char *)malloc(sizeof(char) * 5);
 	fptr = (char *)malloc(sizeof(char) * 5);
 	printf("\n\033[92m********************************************************************************\033[0m\n");
@@ -309,7 +311,7 @@ int main(void)
 	printIsprint('~');
 	printf("\n************************* isprint Test 4 *************************\n");
 	printIsprint(58);
-	printf("************************* isprint Test 5 *************************\n");
+	printf("\n************************* isprint Test 5 *************************\n");
 	printIsprint(13);
 	printf("\n************************* isprint Test 6 *************************\n");
 	printIsprint(65);
@@ -331,5 +333,100 @@ int main(void)
 	printIsprint(32);
 	printf("\n************************* isprint Test 15 *************************\n");
 	printIsprint((unsigned char)28);
+
+	printf("\n\033[92m********************************************************************************\033[0m\n");
+	printf("\033[92m*	                          start test toupper                          *\033[0m\n");
+	printf("\033[92m********************************************************************************\033[0m");
+	printf("\n\n************************* toupper Test 1 *************************\n");
+	ch = 'a';
+	printf("ch before: %c\n", ch);
+	ch = toupper(ch);
+	printf("ch after: %c\n", ch);
+	
+	ch = 'a'	;
+	printf("\nft_ch before: %c\n", ch);
+	ch = ft_toupper(ch);
+	printf("ft_ch after: %c\n", ch);
+
+	printf("\n************************* toupper Test 2 *************************\n");
+	ch = 13;
+	printf("ch before: %c\n", ch);
+	ch = toupper(ch);
+	printf("ch after: %c\n", ch);
+	
+	ch = 13;
+	printf("\nft_ch before: %c\n", ch);	
+	ch = ft_toupper(ch);
+	printf("ft_ch after: %c\n", ch);
+
+	printf("\n************************* toupper Test 3 *************************\n");
+	ch = 78;
+	printf("ch before: %c\n", ch);
+	ch = toupper(ch);
+	printf("ch after: %c\n", ch);
+
+	ch = 78;
+	printf("\nft_ch before: %c\n", ch);	
+	ch = ft_toupper(ch);
+	printf("ft_ch after: %c\n", ch);
+
+	printf("\n************************* toupper Test 4 *************************\n");
+	ch = 50;
+	printf("ch before: %c\n", ch);
+	ch = toupper(ch);
+	printf("ch after: %c\n", ch);
+
+	ch = 50;
+	printf("\nft_ch before: %c\n", ch);	
+	ch = ft_toupper(ch);
+	printf("ft_ch after: %c\n", ch);
+	
+
+	printf("\n\033[92m********************************************************************************\033[0m\n");
+	printf("\033[92m*	                          start test tolower                          *\033[0m\n");
+	printf("\033[92m********************************************************************************\033[0m");
+	printf("\n\n************************* tolower Test 1 *************************\n");
+	ch = 'a';
+	printf("ch before: %c\n", ch);
+	ch = tolower(ch);
+	printf("ch after: %c\n", ch);
+	
+	ch = 'a';
+	printf("\nft_ch before: %c\n", ch);
+	ch = ft_tolower(ch);
+	printf("ft_ch after: %c\n", ch);
+
+	printf("\n************************* tolower Test 2 *************************\n");
+	ch = 13;
+	printf("ch before: %c\n", ch);
+	ch = tolower(ch);
+	printf("ch after: %c\n", ch);
+	
+	ch = 13;
+	printf("\nft_ch before: %c\n", ch);	
+	ch = ft_tolower(ch);
+	printf("ft_ch after: %c\n", ch);
+
+	printf("\n************************* tolower Test 3 *************************\n");
+	ch = 67;
+	printf("ch before: %c\n", ch);
+	ch = tolower(ch);
+	printf("ch after: %c\n", ch);
+
+	ch = 67;
+	printf("\nft_ch before: %c\n", ch);	
+	ch = ft_tolower(ch);
+	printf("ft_ch after: %c\n", ch);
+
+	printf("\n************************* tolower Test 4 *************************\n");
+	ch = 50;
+	printf("ch before: %c\n", ch);
+	ch = tolower(ch);
+	printf("ch after: %c\n", ch);
+
+	ch = 50;
+	printf("\nft_ch before: %c\n", ch);	
+	ch = ft_tolower(ch);
+	printf("ft_ch after: %c\n", ch);
 	return (0);
 }

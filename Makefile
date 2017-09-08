@@ -19,9 +19,18 @@ ft_isdigit	= obj/ft_isdigit.o
 ft_isalnum	= obj/ft_isalnum.o
 ft_isascii	= obj/ft_isascii.o
 ft_isprint	= obj/ft_isprint.o
-FT_IS		= $(ft_isalpha) $(ft_isdigit) \
+ft_isupper	= obj/ft_isupper.o
+ft_islower	= obj/ft_islower.o
+ft_tolower	= obj/ft_tolower.o
+ft_toupper	= obj/ft_toupper.o
+
+DEP			= $(ft_isalpha) $(ft_isdigit) \
 			  $(ft_isalnum) $(ft_isascii) \
-			  $(ft_isprint)
+			  $(ft_isprint) $(ft_isupper) \
+			  $(ft_bzero) $(ft_puts) \
+			  $(ft_toupper) $(ft_strlen) \
+			  $(ft_islower) $(ft_tolower)
+
 ###################################
 #         check for os            #
 ###################################
@@ -78,7 +87,27 @@ $(ft_isprint): src/ft_isprint.s
 	@$(CC) -f $(FORMAT) src/ft_isprint.s -o ft_isprint.o
 	@mv -f *.o $(OBJDIR)
 
-$(LIB): $(ft_puts) $(ft_bzero) $(ft_strlen) $(FT_IS)
+$(ft_isupper): src/ft_isupper.s
+	@echo "\033[92misupper\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_isupper.s -o ft_isupper.o
+	@mv -f *.o $(OBJDIR)
+
+$(ft_islower): src/ft_islower.s
+	@echo "\033[92mislower\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_islower.s -o ft_islower.o
+	@mv -f *.o $(OBJDIR)
+
+$(ft_toupper): src/ft_toupper.s
+	@echo "\033[92mtoupper\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_toupper.s -o ft_toupper.o
+	@mv -f *.o $(OBJDIR)
+
+$(ft_tolower): src/ft_tolower.s
+	@echo "\033[92mtolower\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_tolower.s -o ft_tolower.o
+	@mv -f *.o $(OBJDIR)
+
+$(LIB): $(DEP)
 	@echo "\033[92mBuilding Library\033[0m"
 	@ar rc $(LIB) $(OBJDIR)*.o
 	@ranlib $(LIB)
