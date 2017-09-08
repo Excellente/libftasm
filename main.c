@@ -72,6 +72,26 @@ void	printIsalnum(int c)
 		printf("%c is not alnum_ft\n", c);
 }
 
+void	printIsascii(int c)
+{
+	int ret = 0;
+	int ret2 = 0;
+
+	/************************ isascii *********************/
+	ret = isascii(c);
+	if (ret)
+		printf("%c isascii\n", c);
+	else
+		printf("%c is not ascii\n", c);
+
+	/************************ ft_isascii *********************/
+	ret2 = ft_isascii(c);
+	if (ret2)
+		printf("%c isascii_ft\n", c);
+	else
+		printf("%c is not ascii_ft\n", c);
+}
+
 int main(void)
 {
 	int ret;
@@ -223,5 +243,39 @@ int main(void)
 	printIsalnum(124);
 	printf("\n************************* isalnum Test 14 *************************\n");
 	printIsalnum((unsigned char)'G');
+
+	printf("\n\033[92m********************************************************************************\033[0m\n");
+	printf("\033[92m*	                          start test isascii                           *\033[0m\n");
+	printf("\033[92m********************************************************************************\033[0m\n");
+	printf("\n\n************************* isascii Test 1 *************************\n");
+	printIsascii(EOF);
+	printf("\n************************* isascii Test 2 *************************\n");
+	printIsascii(48);
+	printf("\n************************* isascii Test 3 *************************\n");
+	printIsascii(57);
+	printf("\n************************* isascii Test 4 *************************\n");
+	printIsascii(58);
+	printf("************************* isascii Test 5 *************************\n");
+	printIsascii(13);
+	printf("\n************************* isascii Test 6 *************************\n");
+	printIsascii(65);
+	printf("\n************************* isascii Test 7 *************************\n");
+	printIsascii(79);
+	printf("\n************************* isascii Test 8 *************************\n");
+	printIsascii(167);
+	printf("\n************************* isascii Test 9 *************************\n");
+	printIsascii(94);
+	printf("\n************************* isascii Test 10 *************************\n");
+	printIsascii(97);
+	printf("\n************************* isascii Test 11 *************************\n");
+	printIsascii(89);
+	printf("\n************************* isascii Test 12 *************************\n");
+	printIsascii(122);
+	printf("\n************************* isascii Test 13 *************************\n");
+	printIsascii(124);
+	printf("\n************************* isascii Test 14 *************************\n");
+	printIsascii((unsigned char)'G');
+	printf("\n************************* isascii Test 15 *************************\n");
+	printIsascii((unsigned char)723);
 	return (0);
 }

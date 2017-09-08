@@ -6,7 +6,7 @@ _ft_isdigit:
     jnge    _not_digit
     cmp     rdi, 57
     jg      _not_digit
-    mov     rax, 1;
+    mov     rax, 1
     jmp     _exit
 
 _not_digit:
