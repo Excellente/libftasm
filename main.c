@@ -92,6 +92,26 @@ void	printIsascii(int c)
 		printf("%c is not ascii_ft\n", c);
 }
 
+void	printIsprint(int c)
+{
+	int ret = 0;
+	int ret2 = 0;
+
+	/************************ isascii *********************/
+	ret = isprint(c);
+	if (ret)
+		printf("%c isprint\n", c);
+	else
+		printf("%c is not print\n", c);
+
+	/************************ ft_isascii *********************/
+	ret2 = ft_isprint(c);
+	if (ret2)
+		printf("%c isprint_ft\n", c);
+	else
+		printf("%c is not print_ft\n", c);
+}
+
 int main(void)
 {
 	int ret;
@@ -277,5 +297,39 @@ int main(void)
 	printIsascii((unsigned char)'G');
 	printf("\n************************* isascii Test 15 *************************\n");
 	printIsascii((unsigned char)723);
+
+	printf("\n\033[92m********************************************************************************\033[0m\n");
+	printf("\033[92m*	                          start test isprint                           *\033[0m\n");
+	printf("\033[92m********************************************************************************\033[0m\n");
+	printf("\n\n************************* isprint Test 1 *************************\n");
+	printIsprint(EOF);
+	printf("\n************************* isprint Test 2 *************************\n");
+	printIsprint(48);
+	printf("\n************************* isprint Test 3 *************************\n");
+	printIsprint('~');
+	printf("\n************************* isprint Test 4 *************************\n");
+	printIsprint(58);
+	printf("************************* isprint Test 5 *************************\n");
+	printIsprint(13);
+	printf("\n************************* isprint Test 6 *************************\n");
+	printIsprint(65);
+	printf("\n************************* isprint Test 7 *************************\n");
+	printIsprint(79);
+	printf("\n************************* isprint Test 8 *************************\n");
+	printIsprint(167);
+	printf("\n************************* isprint Test 9 *************************\n");
+	printIsprint(94);
+	printf("\n************************* isprint Test 10 *************************\n");
+	printIsprint(97);
+	printf("\n************************* isprint Test 11 *************************\n");
+	printIsprint(89);
+	printf("\n************************* isprint Test 12 *************************\n");
+	printIsprint(127);
+	printf("\n************************* isprint Test 13 *************************\n");
+	printIsprint(124);
+	printf("\n************************* isprint Test 14 *************************\n");
+	printIsprint(32);
+	printf("\n************************* isprint Test 15 *************************\n");
+	printIsprint((unsigned char)28);
 	return (0);
 }

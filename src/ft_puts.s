@@ -25,7 +25,7 @@ _newline:
     mov     rdx, 1
     mov     rax, SYS_WRITE
     syscall
-    mov     rax, 42
+    mov     rax, 10
     jmp     _exit
 
 _error:
@@ -34,7 +34,7 @@ _error:
     mov     rdx, 1
     mov     rax, SYS_WRITE
     syscall
-    mov     rax, -42
+    mov     rax, -10
     jmp     _exit
 
 _exit:

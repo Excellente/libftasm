@@ -11,14 +11,17 @@ ARCH	= -macosx_version_min 10.8
 OS		:= $(shell uname)
 
 ######### object files ############
-ft_puts = obj/ft_puts.o
-ft_bzero = obj/ft_bzero.o
-ft_strlen = obj/ft_strlen.o
-ft_isalpha = obj/ft_isalpha.o
-ft_isdigit = obj/ft_isdigit.o
-ft_isalnum = obj/ft_isalnum.o
-ft_isascii = obj/ft_isascii.o
-
+ft_puts		= obj/ft_puts.o
+ft_bzero	= obj/ft_bzero.o
+ft_strlen	= obj/ft_strlen.o
+ft_isalpha	= obj/ft_isalpha.o
+ft_isdigit	= obj/ft_isdigit.o
+ft_isalnum	= obj/ft_isalnum.o
+ft_isascii	= obj/ft_isascii.o
+ft_isprint	= obj/ft_isprint.o
+FT_IS		= $(ft_isalpha) $(ft_isdigit) \
+			  $(ft_isalnum) $(ft_isascii) \
+			  $(ft_isprint)
 ###################################
 #         check for os            #
 ###################################
@@ -70,7 +73,12 @@ $(ft_isascii): src/ft_isascii.s
 	@$(CC) -f $(FORMAT) src/ft_isascii.s -o ft_isascii.o
 	@mv -f *.o $(OBJDIR)
 
-$(LIB): $(ft_puts) $(ft_bzero) $(ft_strlen) $(ft_isalpha) $(ft_isdigit) $(ft_isalnum) $(ft_isascii)
+$(ft_isprint): src/ft_isprint.s
+	@echo "\033[92misprint\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_isprint.s -o ft_isprint.o
+	@mv -f *.o $(OBJDIR)
+
+$(LIB): $(ft_puts) $(ft_bzero) $(ft_strlen) $(FT_IS)
 	@echo "\033[92mBuilding Library\033[0m"
 	@ar rc $(LIB) $(OBJDIR)*.o
 	@ranlib $(LIB)
