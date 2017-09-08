@@ -24,6 +24,7 @@ ft_isupper	= obj/ft_isupper.o
 ft_islower	= obj/ft_islower.o
 ft_tolower	= obj/ft_tolower.o
 ft_toupper	= obj/ft_toupper.o
+ft_memset	= obj/ft_memset.o
 
 DEP			= $(ft_isalpha) $(ft_isdigit) \
 			  $(ft_isalnum) $(ft_isascii) \
@@ -31,7 +32,7 @@ DEP			= $(ft_isalpha) $(ft_isdigit) \
 			  $(ft_bzero) $(ft_puts) \
 			  $(ft_toupper) $(ft_strlen) \
 			  $(ft_islower) $(ft_tolower) \
-			  $(ft_strcat)
+			  $(ft_strcat) $(ft_memset)
 
 ###################################
 #         check for os            #
@@ -112,6 +113,11 @@ $(ft_toupper): src/ft_toupper.s
 $(ft_tolower): src/ft_tolower.s
 	@echo "\033[92mtolower\033[0m"
 	@$(CC) -f $(FORMAT) src/ft_tolower.s -o ft_tolower.o
+	@mv -f *.o $(OBJDIR)
+
+$(ft_memset): src/ft_memset.s
+	@echo "\033[92mmemset\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_memset.s -o ft_memset.o
 	@mv -f *.o $(OBJDIR)
 
 $(LIB): $(DEP)

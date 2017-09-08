@@ -478,6 +478,35 @@ int main(void)
 	printf("ft_strcat res: %s\n", ptr);
 	ptr[4] = '\0';
 	
+	printf("\n\033[92m********************************************************************************\033[0m\n");
+	printf("\033[92m*	                          start test memset                            *\033[0m\n");
+	printf("\033[92m********************************************************************************\033[0m");
+	printf("\n\n************************* memset Test 1 *************************\n");
+	assign(ptr, fptr);
+	printf("ptr: %s\n", ptr);
+	memset(ptr, '_', 3);
+	printf("memset res: %s\n\n", ptr);
+
+	assign(ptr, fptr);
+	printf("ptr: %s\n", ptr);
+	ft_memset(ptr, '_', 3);
+	printf("ft_memset res: %s\n", ptr);
+
+	printf("\n\n************************* memset Test 2 *************************\n");
+	printf("num before: ");
+	print_int(num);
+	memset(num, 54, 4);
+	printf("memset res: ");
+	print_int(num);
+	printf("\n\n");
+	
+	printf("num2 before: ");
+	print_int(num2);
+	ft_memset(num2, 54, 4);
+	printf("ft_memset res: ");
+	print_int(num2);
+	printf("\n");
+
 	free(ptr);
 	free(fptr);
 	return (0);
