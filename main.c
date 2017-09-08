@@ -32,6 +32,26 @@ void	printIsalpha(int c)
 		printf("%c is not ft_alpha\n", c);
 }
 
+void	printIsdigit(int c)
+{
+	int ret = 0;
+	int ret2 = 0;
+
+	/************************ isdigit *********************/
+	ret = isdigit(c);
+	if (ret)
+		printf("%d isdigit\n", c);
+	else
+		printf("%d is not digit\n", c);
+
+	/************************ ft_isdigit *********************/
+	ret2 = ft_isdigit(c);
+	if (ret2)
+		printf("%d ft_isdigit\n", c);
+	else
+		printf("%d is not ft_digit\n", c);
+}
+
 int main(void)
 {
 	int ret;
@@ -45,82 +65,82 @@ int main(void)
 	ret = 0;
 	ptr = (char *)malloc(sizeof(char) * 5);
 	fptr = (char *)malloc(sizeof(char) * 5);
-	/**************************************************************************
-	**	                             start test strlen                        *
-	**************************************************************************/
-	// printf("************************* strlen Test 1 *************************\n");	
-	// ret = strlen(ptr);
-	// printf("strlen ret: %d\n", ret);
-	// ret = ft_strlen(ptr);
-	// printf("ft_strlen ret: %d\n", ret);
+	/*******************************************************************************
+	**	                             start test strlen                             *
+	*******************************************************************************/
+	printf("************************* strlen Test 1 *************************\n");	
+	ret = strlen(ptr);
+	printf("strlen ret: %d\n", ret);
+	ret = ft_strlen(ptr);
+	printf("ft_strlen ret: %d\n", ret);
 	
-	// printf("\n************************* strlen Test 2 *************************\n");
-	// ret = strlen("");
-	// printf("strlen ret: %d\n", ret);
-	// ret = ft_strlen("");
-	// printf("ft_strlen ret: %d\n", ret);
+	printf("\n************************* strlen Test 2 *************************\n");
+	ret = strlen("");
+	printf("strlen ret: %d\n", ret);
+	ret = ft_strlen("");
+	printf("ft_strlen ret: %d\n", ret);
 
-	// printf("\n************************* strlen Test 3 *************************\n");
-	// ret = strlen("Zamani");
-	// printf("strlen ret: %d\n", ret);
-	// ret = ft_strlen("Zamani");
-	// printf("ft_strlen ret: %d\n\n", ret);
+	printf("\n************************* strlen Test 3 *************************\n");
+	ret = strlen("Zamani");
+	printf("strlen ret: %d\n", ret);
+	ret = ft_strlen("Zamani");
+	printf("ft_strlen ret: %d\n\n", ret);
 
-	/**************************************************************************
-	**	                             start test puts                          *
-	**************************************************************************/
-	// printf("************************* puts Test 1 *************************\n");
-	// ret = puts("");
-	// printf("puts ret: %d\n", ret);
-	// ret = ft_puts("");
-	// printf("ft_puts ret: %d\n", ret);
+	/*****************************************************************************
+	**	                             start test puts                             *
+	*****************************************************************************/
+	printf("************************* puts Test 1 *************************\n");
+	ret = puts("");
+	printf("puts ret: %d\n", ret);
+	ret = ft_puts("");
+	printf("ft_puts ret: %d\n", ret);
 
-	// printf("\n************************* puts Test 2 *************************\n");
-	// ret = puts(ptr);
-	// printf("puts ret: %d\n", ret);
-	// ret = ft_puts(ptr);
-	// printf("ft_puts ret: %d\n", ret);
+	printf("\n************************* puts Test 2 *************************\n");
+	ret = puts(ptr);
+	printf("puts ret: %d\n", ret);
+	ret = ft_puts(ptr);
+	printf("ft_puts ret: %d\n", ret);
 
-	// printf("\n************************* puts Test 3 *************************\n");
-	// ret = puts("Zamani");
-	// printf("puts ret: %d\n", ret);
-	// ret = ft_puts("ft_Zamani");
-	// printf("ft_puts ret: %d\n", ret);
+	printf("\n************************* puts Test 3 *************************\n");
+	ret = puts("Zamani");
+	printf("puts ret: %d\n", ret);
+	ret = ft_puts("ft_Zamani");
+	printf("ft_puts ret: %d\n", ret);
 
-	/**************************************************************************
-	**	                           start test bzero                           *
-	**************************************************************************/
-	// printf("\n************************* bzero Test 1 *************************\n");
-	// bzero(ptr, 4);
-	// printf("bzero: %s\n", ptr);
-	// ft_bzero(fptr, 4);
-	// printf("ft_bzero: %s\n", fptr);
+	/********************************************************************************
+	**	                           start test bzero                                 *
+	********************************************************************************/
+	printf("\n************************* bzero Test 1 *************************\n");
+	bzero(ptr, 4);
+	printf("bzero: %s\n", ptr);
+	ft_bzero(fptr, 4);
+	printf("ft_bzero: %s\n", fptr);
 
-	// printf("\n************************* bzero Test 2 *************************\n");
-	// printf("before bzero: %s\n", bptr);
-	// bzero(bptr, 4);
-	// printf("after bzero: %s\n\n", bptr);
+	printf("\n************************* bzero Test 2 *************************\n");
+	printf("before bzero: %s\n", bptr);
+	bzero(bptr, 4);
+	printf("after bzero: %s\n\n", bptr);
 
-	// printf("before ft_bzero: %s\n", sfptr);
-	// ft_bzero(sfptr, 4);
-	// printf("after ft_bzero: %s\n", sfptr);
+	printf("before ft_bzero: %s\n", sfptr);
+	ft_bzero(sfptr, 4);
+	printf("after ft_bzero: %s\n", sfptr);
 
-	// printf("\n************************* bzero Test 3 *************************\n");
-	// printf("before bzero: ");
-	// print_int(num);
-	// bzero(num, 5);
-	// printf("after bzero: ");
-	// print_int(num);
+	printf("\n************************* bzero Test 3 *************************\n");
+	printf("before bzero: ");
+	print_int(num);
+	bzero(num, 5);
+	printf("after bzero: ");
+	print_int(num);
 
-	// printf("\nbefore ft_bzero: ");
-	// print_int(num2);
-	// ft_bzero(num2, 5);
-	// printf("after bzero: ");
-	// print_int(num2);
+	printf("\nbefore ft_bzero: ");
+	print_int(num2);
+	ft_bzero(num2, 5);
+	printf("after bzero: ");
+	print_int(num2);
 	
-	/**************************************************************************
-	**	                          start test isalpha                          *
-	**************************************************************************/
+	/************************************************************************************
+	*	                          start test isalpha                                    *
+	************************************************************************************/
 	printf("\n\n************************* isalpha Test 1 *************************\n");
 	printIsalpha(13);
 	printf("\n************************* isalpha Test 2 *************************\n");
@@ -139,5 +159,17 @@ int main(void)
 	printIsalpha(122);
 	printf("\n************************* isalpha Test 9 *************************\n");
 	printIsalpha(124);
+
+	/********************************************************************************
+	*	                          start test isdigit                                *
+	********************************************************************************/
+	printf("\n\n************************* isditit Test 1 *************************\n");
+	printIsdigit(47);
+	printf("\n************************* isditit Test 2 *************************\n");
+	printIsdigit(48);
+	printf("\n************************* isditit Test 3 *************************\n");
+	printIsdigit(57);
+	printf("\n************************* isdigit Test 4 *************************\n");
+	printIsdigit(58);
 	return (0);
 }

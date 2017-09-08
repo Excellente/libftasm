@@ -15,6 +15,7 @@ ft_puts = obj/ft_puts.o
 ft_bzero = obj/ft_bzero.o
 ft_strlen = obj/ft_strlen.o
 ft_isalpha = obj/ft_isalpha.o
+ft_isdigit = obj/ft_isdigit.o
 
 ###################################
 #         check for os            #
@@ -52,7 +53,12 @@ $(ft_isalpha): src/ft_isalpha.s
 	@$(CC) -f $(FORMAT) src/ft_isalpha.s -o ft_isalpha.o
 	@mv -f *.o $(OBJDIR)
 
-$(LIB): $(ft_puts) $(ft_bzero) $(ft_strlen) $(ft_isalpha)
+$(ft_isdigit): src/ft_isdigit.s
+	@echo "\033[92misdigit\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_isdigit.s -o ft_isdigit.o
+	@mv -f *.o $(OBJDIR)
+
+$(LIB): $(ft_puts) $(ft_bzero) $(ft_strlen) $(ft_isalpha) $(ft_isdigit)
 	@echo "\033[92mBuilding Library\033[0m"
 	@ar rc $(LIB) $(OBJDIR)*.o
 	@ranlib $(LIB)
