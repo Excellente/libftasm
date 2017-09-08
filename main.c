@@ -112,6 +112,25 @@ void	printIsprint(int c)
 		printf("%c is not print_ft\n", c);
 }
 
+void	assign(char *s, char *st)
+{
+	int i = 0;
+
+	while (i < 4)
+	{
+		s[i] = 'j' + i;
+		i++;
+	}
+	s[i] = '\0';
+	i = 0;
+	while (i < 5)
+	{
+		st[i] = 'f' + i;
+		i++;
+	}
+	st[i] = '\0';
+}
+
 int main(void)
 {
 	int ret;
@@ -428,5 +447,38 @@ int main(void)
 	printf("\nft_ch before: %c\n", ch);	
 	ch = ft_tolower(ch);
 	printf("ft_ch after: %c\n", ch);
+	
+	printf("\n\033[92m********************************************************************************\033[0m\n");
+	printf("\033[92m*	                          start test strcat                            *\033[0m\n");
+	printf("\033[92m********************************************************************************\033[0m");
+	printf("\n\n************************* strcat Test 1 *************************\n");
+	printf("ptr: %s\n", ptr);
+	printf("fptr: %s\n", fptr);
+	strcat(ptr, fptr);
+	printf("strcat res: %s\n\n", ptr);
+	ptr[4] = '\0';
+
+	printf("ptr: %s\n", ptr);
+	printf("fptr: %s\n", fptr);
+	ft_strcat(ptr, fptr);
+	printf("ft_strcat res: %s\n", ptr);
+	ptr[4] = '\0';
+
+	printf("\n************************* strcat Test 2 *************************\n");
+	assign(ptr, fptr);
+	printf("ptr: %s\n", ptr);
+	printf("fptr: %s\n", fptr);
+	strcat(ptr, fptr);
+	printf("strcat res: %s\n\n", ptr);
+	ptr[4] = '\0';
+
+	printf("ptr: %s\n", ptr);
+	printf("fptr: %s\n", fptr);
+	ft_strcat(ptr, fptr);
+	printf("ft_strcat res: %s\n", ptr);
+	ptr[4] = '\0';
+	
+	free(ptr);
+	free(fptr);
 	return (0);
 }

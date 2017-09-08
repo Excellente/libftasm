@@ -13,6 +13,7 @@ OS		:= $(shell uname)
 ######### object files ############
 ft_puts		= obj/ft_puts.o
 ft_bzero	= obj/ft_bzero.o
+ft_strcat	= obj/ft_strcat.o
 ft_strlen	= obj/ft_strlen.o
 ft_isalpha	= obj/ft_isalpha.o
 ft_isdigit	= obj/ft_isdigit.o
@@ -29,7 +30,8 @@ DEP			= $(ft_isalpha) $(ft_isdigit) \
 			  $(ft_isprint) $(ft_isupper) \
 			  $(ft_bzero) $(ft_puts) \
 			  $(ft_toupper) $(ft_strlen) \
-			  $(ft_islower) $(ft_tolower)
+			  $(ft_islower) $(ft_tolower) \
+			  $(ft_strcat)
 
 ###################################
 #         check for os            #
@@ -55,6 +57,11 @@ $(ft_puts): src/ft_puts.s
 $(ft_bzero): src/ft_bzero.s
 	@echo "\033[92mbzero\033[0m"
 	@$(CC) -f $(FORMAT) -I$(INC) src/ft_bzero.s -o ft_bzero.o
+	@mv -f *.o $(OBJDIR)
+
+$(ft_strcat): src/ft_strcat.s
+	@echo "\033[92mstrcat\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_strcat.s -o ft_strcat.o
 	@mv -f *.o $(OBJDIR)
 
 $(ft_strlen): src/ft_strlen.s
