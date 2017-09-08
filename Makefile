@@ -12,7 +12,9 @@ OS		:= $(shell uname)
 
 ######### object files ############
 ft_puts = obj/ft_puts.o
+ft_bzero = obj/ft_bzero.o
 ft_strlen = obj/ft_strlen.o
+ft_isalpha = obj/ft_isalpha.o
 
 ###################################
 #         check for os            #
@@ -24,28 +26,37 @@ else
 	ARCH :=
 endif
 
-all: $(ft_puts) $(ft_strlen) $(LIB) $(EXE)
+all: $(EXE)
 
-$(EXE): main.c	
+$(EXE): $(LIB) main.c	
 	@$(COMP) $^ $(LIB) -I $(INC) -o $(EXE)
 	@echo "\033[92mMake Done!\033[0m"
 
 $(ft_puts): src/ft_puts.s
-	@echo "\033[92mputs object\033[0m"
+	@echo "\033[92mputs\033[0m"
 	@$(CC) -f $(FORMAT) -I$(INC) src/ft_puts.s -o ft_puts.o
 	@mv -f *.o $(OBJDIR)
 
+$(ft_bzero): src/ft_bzero.s
+	@echo "\033[92mbzero\033[0m"
+	@$(CC) -f $(FORMAT) -I$(INC) src/ft_bzero.s -o ft_bzero.o
+	@mv -f *.o $(OBJDIR)
+
 $(ft_strlen): src/ft_strlen.s
-	@echo "\033[92mstrlen object\033[0m"
+	@echo "\033[92mstrlen\033[0m"
 	@$(CC) -f $(FORMAT) src/ft_strlen.s -o ft_strlen.o
 	@mv -f *.o $(OBJDIR)
 
-$(LIB):
+$(ft_isalpha): src/ft_isalpha.s
+	@echo "\033[92misalpha\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_isalpha.s -o ft_isalpha.o
+	@mv -f *.o $(OBJDIR)
+
+$(LIB): $(ft_puts) $(ft_bzero) $(ft_strlen) $(ft_isalpha)
 	@echo "\033[92mBuilding Library\033[0m"
 	@ar rc $(LIB) $(OBJDIR)*.o
 	@ranlib $(LIB)
 	@echo "\033[92mLibrary Built\033[0m"
-
 
 push:
 	@make fclean
