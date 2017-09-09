@@ -15,6 +15,7 @@ ft_puts		= obj/ft_puts.o
 ft_bzero	= obj/ft_bzero.o
 ft_strcat	= obj/ft_strcat.o
 ft_strlen	= obj/ft_strlen.o
+ft_strdup	= obj/ft_strdup.o
 ft_isalpha	= obj/ft_isalpha.o
 ft_isdigit	= obj/ft_isdigit.o
 ft_isalnum	= obj/ft_isalnum.o
@@ -25,6 +26,7 @@ ft_islower	= obj/ft_islower.o
 ft_tolower	= obj/ft_tolower.o
 ft_toupper	= obj/ft_toupper.o
 ft_memset	= obj/ft_memset.o
+ft_memcpy	= obj/ft_memcpy.o
 
 DEP			= $(ft_isalpha) $(ft_isdigit) \
 			  $(ft_isalnum) $(ft_isascii) \
@@ -32,7 +34,8 @@ DEP			= $(ft_isalpha) $(ft_isdigit) \
 			  $(ft_bzero) $(ft_puts) \
 			  $(ft_toupper) $(ft_strlen) \
 			  $(ft_islower) $(ft_tolower) \
-			  $(ft_strcat) $(ft_memset)
+			  $(ft_strcat) $(ft_memset) \
+			  $(ft_memcpy) $(ft_strdup)
 
 ###################################
 #         check for os            #
@@ -68,6 +71,11 @@ $(ft_strcat): src/ft_strcat.s
 $(ft_strlen): src/ft_strlen.s
 	@echo "\033[92mstrlen\033[0m"
 	@$(CC) -f $(FORMAT) src/ft_strlen.s -o ft_strlen.o
+	@mv -f *.o $(OBJDIR)
+
+$(ft_strdup): src/ft_strdup.s
+	@echo "\033[92mstrdup\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_strdup.s -o ft_strdup.o
 	@mv -f *.o $(OBJDIR)
 
 $(ft_isalpha): src/ft_isalpha.s
@@ -118,6 +126,11 @@ $(ft_tolower): src/ft_tolower.s
 $(ft_memset): src/ft_memset.s
 	@echo "\033[92mmemset\033[0m"
 	@$(CC) -f $(FORMAT) src/ft_memset.s -o ft_memset.o
+	@mv -f *.o $(OBJDIR)
+
+$(ft_memcpy): src/ft_memcpy.s
+	@echo "\033[92mmemcpy\033[0m"
+	@$(CC) -f $(FORMAT) src/ft_memcpy.s -o ft_memcpy.o
 	@mv -f *.o $(OBJDIR)
 
 $(LIB): $(DEP)

@@ -507,6 +507,40 @@ int main(void)
 	print_int(num2);
 	printf("\n");
 
+	printf("\n\033[92m********************************************************************************\033[0m\n");
+	printf("\033[92m*	                          start test memcpy                            *\033[0m\n");
+	printf("\033[92m********************************************************************************\033[0m");
+	printf("\n\n************************* memcpy Test 1 *************************\n");
+	assign(ptr, fptr);
+	printf("ptr: %s\n", ptr);
+	printf("fptr: %s\n", fptr);
+	memcpy(ptr, fptr, 3);
+	printf("memset ptr: %s\n\n", ptr);
+	
+	assign(ptr, fptr);
+	printf("ptr: %s\n", ptr);
+	printf("fptr: %s\n", fptr);
+	ft_memcpy(ptr, fptr, 3);
+	printf("ft_memset res: %s\n", ptr);
+
+	printf("\n\033[92m********************************************************************************\033[0m\n");
+	printf("\033[92m*	                          start test strdup                            *\033[0m\n");
+	printf("\033[92m********************************************************************************\033[0m");
+	printf("\n\n************************* strdup Test 1 *************************\n");
+	assign(ptr, fptr);
+	printf("ptr: %s\n", ptr);
+	printf("fptr: %s\n", fptr);
+	free(fptr);
+	fptr = strdup(ptr);
+	printf("strdup ptr: %s\nstrdup fptr: %s\n\n", ptr, fptr);
+	
+	assign(ptr, fptr);
+	printf("ptr: %s\n", ptr);
+	printf("fptr: %s\n", fptr);
+	free(fptr);
+	fptr = ft_strdup(ptr);
+	printf("ft_strdup ptr: %s\nft_strdup fptr: %s\n\n", ptr, fptr);
+
 	free(ptr);
 	free(fptr);
 	return (0);
