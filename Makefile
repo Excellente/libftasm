@@ -48,7 +48,10 @@ else
 	ARCH :=
 endif
 
-all: $(EXE)
+all: $(OBJDIR) $(EXE)
+
+$(OBJDIR):
+	mkdir $@
 
 $(EXE): $(LIB) main.c	
 	@$(COMP) $^ $(LIB) -I $(INC) -o $(EXE)
@@ -162,7 +165,7 @@ push:
 
 clean:
 	@echo "\033[92mCleaning\033[0m"
-	@rm -f $(SRCDIR)*.o $(OBJDIR)*.o *.out *.o
+	@rm -fr $(SRCDIR)*.o $(OBJDIR) *.out *.o
 
 fclean: clean
 	@rm -f $(LIB) $(EXE)
