@@ -133,6 +133,7 @@ void	assign(char *s, char *st)
 
 int main(void)
 {
+	int	fd;
 	int ret;
 	char ch;
 	char *ptr;
@@ -144,6 +145,7 @@ int main(void)
 
 	ret = 0;
 	ch = 32;
+	fd = open("main.c", O_RDONLY);
 	ptr = (char *)malloc(sizeof(char) * 5);
 	fptr = (char *)malloc(sizeof(char) * 5);
 	printf("\n\033[92m********************************************************************************\033[0m\n");
@@ -541,6 +543,13 @@ int main(void)
 	fptr = ft_strdup(ptr);
 	printf("ft_strdup ptr: %s\nft_strdup fptr: %s\n\n", ptr, fptr);
 
+	printf("\n\033[92m********************************************************************************\033[0m\n");
+	printf("\033[92m*	                          start test ft_cat                            *\033[0m\n");
+	printf("\033[92m********************************************************************************\033[0m");
+	printf("\n\n************************* ft_cat Test 1 *************************\n");
+	ft_cat(fd);
+
+	close(fd);
 	free(ptr);
 	free(fptr);
 	return (0);

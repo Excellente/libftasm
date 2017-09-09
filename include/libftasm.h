@@ -1,10 +1,13 @@
 #ifndef	LIBFTASM_H
 #define	LIBFTASM_H
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include <ctype.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/fcntl.h>
 
 int     ft_isalpha(int c);
 int     ft_isascii(int c);
@@ -20,6 +23,7 @@ size_t  ft_strlen(const char *s);
 char    *ft_strdup(const char *s);
 char    *ft_strcat(char *s1, const char *s2);
 
+void    ft_cat(const int fd);
 void    ft_bzero(void *s, size_t n);
 void    *ft_memset(void *b, int c, size_t n);
 void    *ft_memcpy(void *d, const void *s, size_t n);

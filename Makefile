@@ -11,6 +11,7 @@ ARCH	= -macosx_version_min 10.8
 OS		:= $(shell uname)
 
 ######### object files ############
+ft_cat		= obj/ft_cat.o
 ft_puts		= obj/ft_puts.o
 ft_bzero	= obj/ft_bzero.o
 ft_strcat	= obj/ft_strcat.o
@@ -35,7 +36,7 @@ DEP			= $(ft_isalpha) $(ft_isdigit) \
 			  $(ft_toupper) $(ft_strlen) \
 			  $(ft_islower) $(ft_tolower) \
 			  $(ft_strcat) $(ft_memset) \
-			  $(ft_memcpy) $(ft_strdup)
+			  $(ft_memcpy) $(ft_strdup) $(ft_cat)
 
 ###################################
 #         check for os            #
@@ -52,6 +53,11 @@ all: $(EXE)
 $(EXE): $(LIB) main.c	
 	@$(COMP) $^ $(LIB) -I $(INC) -o $(EXE)
 	@echo "\033[92mMake Done!\033[0m"
+
+$(ft_cat): src/ft_cat.s
+	@echo "\033[92mcat\033[0m"
+	@$(CC) -f $(FORMAT) -I$(INC) src/ft_cat.s -o ft_cat.o
+	@mv -f *.o $(OBJDIR)
 
 $(ft_puts): src/ft_puts.s
 	@echo "\033[92mputs\033[0m"
